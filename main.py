@@ -25,9 +25,9 @@ def salidaQR(hash_qr,data):
     respuesta = qr.crearQR(hash_qr, data)
     return serve_pil_image(respuesta)
 
-@app.route('/<hash_qr>/<nombre>/<sede>/<edificio>/<direccion>/<aula>/<fecha>/<hora>')
-def getMain(hash_qr,nombre,sede,edificio,direccion,aula,fecha,hora):
-    data = {"nombre":nombre,"sede":sede,"edificio":edificio,"direccion":direccion, "aula" : aula, "fecha":fecha,"hora":hora}
+@app.route('/<hash_qr>/<actividad>/<nombre>/<sede>/<edificio>/<direccion>/<aula>/<fecha>/<hora>')
+def getMain(hash_qr,actividad, nombre,sede,edificio,direccion,aula,fecha,hora):
+    data = {"actividad":actividad, "nombre":nombre,"sede":sede,"edificio":edificio,"direccion":direccion, "aula" : aula, "fecha":fecha,"hora":hora}
     return salidaQR(hash_qr, data)
 
 @app.route('/<hash_qr>', methods=['GET', 'POST'])

@@ -40,8 +40,7 @@ def crearQR(textoQR, json):
     size = imgQR.size
 
 # CREO EL FONDO DONDE SE COLOCARA TODO
-
-    fondo = Image.new("L",(size[0],570),255)
+    fondo = Image.new("L",(size[0],590),255)
     fondo.paste(imgQR)
 
 # COMIENZO A AGREGAR EL TEXTO
@@ -51,6 +50,7 @@ def crearQR(textoQR, json):
 
     fondoDraw.text(posTitulo,text="Turno UNSAdA",font=fontTitulo)
     crearTexto(fondoDraw, font, "Nombre: " + json["nombre"])
+    crearTexto(fondoDraw, font, "actividad: " + json["actividad"])
     crearTexto(fondoDraw, font, "Sede: " + json["sede"])
     crearTexto(fondoDraw, font, "Edificio: " + json["edificio"]+ " en " + json["direccion"])
     crearTexto(fondoDraw, font, "Aula: " + json["aula"])
