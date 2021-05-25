@@ -3,7 +3,7 @@ import numpy as np
 from PIL import Image, ImageFont, ImageDraw
 
 
-
+posInicioTexto = [30,350]
 posTexto = [30,350]
 espaciadoDeTexto = [0,40]
 
@@ -11,7 +11,7 @@ espaciadoDeTexto = [0,40]
 nombreFuente = "fonts/abel-regular.ttf"
 sizeTexto = 16
 sizeTitulo = 24
-posTitulo = (100, 310)
+posTitulo = (55, 310)
 
 
 def crearTexto(fondoDraw, font, texto):
@@ -22,6 +22,8 @@ def crearTexto(fondoDraw, font, texto):
 
 
 def crearQR(textoQR, json):
+    posTexto[0] = posInicioTexto[0]
+    posTexto[1] = posInicioTexto[1]
     if(not isinstance(textoQR, str)):
         print("No es un string.")
         return None
@@ -48,13 +50,13 @@ def crearQR(textoQR, json):
     font = ImageFont.truetype(nombreFuente,sizeTexto)
     fontTitulo = ImageFont.truetype(nombreFuente, sizeTitulo)
 
-    fondoDraw.text(posTitulo,text="Turno UNSAdA",font=fontTitulo)
+    fondoDraw.text(posTitulo,text="Permiso acceso UNSAdA",font=fontTitulo)
     crearTexto(fondoDraw, font, "Nombre: " + json["nombre"])
     crearTexto(fondoDraw, font, "actividad: " + json["actividad"])
     crearTexto(fondoDraw, font, "Sede: " + json["sede"])
     crearTexto(fondoDraw, font, "Edificio: " + json["edificio"]+ " en " + json["direccion"])
     crearTexto(fondoDraw, font, "Aula: " + json["aula"])
-    crearTexto(fondoDraw, font, "Turno: el día " + json["fecha"] + " a las " + json["hora"] + "hs")
-    guardadoEn = "tmp/sample.png"
+    crearTexto(fondoDraw, font, "Permiso para día " + json["fecha"] + " a las " + json["hora"] + "hs")
+    guardadoEn = "sample.png"
     fondo.save(guardadoEn)
     return guardadoEn
